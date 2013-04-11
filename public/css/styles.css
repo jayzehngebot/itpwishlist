@@ -1,0 +1,94 @@
+html {
+    background: #000;
+	background: url(img/burritoTile01.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+}
+
+body {
+
+	margin: 0;
+	padding: 0;
+	font-family: EuropaGroNr2SBOP-Ult; 
+}
+
+form {
+	width: 400px;
+	margin: 0 auto;
+	position: relative;
+	text-align: right;
+	padding-right: 150px;
+}
+
+input{
+	position: relative;
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+	padding-left : 15px;
+	top: -10px;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#headRule {
+	padding: 0px;
+	margin: 0 auto;
+	top: 0px;
+	background: black;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+}	
+
+#headContainer {
+	margin: 0 auto;
+	width: 900px;
+	text-align: left;
+}
+
+h1 {
+	display: inline-block;
+	color: #9a63c9;
+	padding: 0;
+	margin: 0;
+	font-size: 22px;
+	line-height: 34px;
+}
+
+h2 {
+	display: inline-block;
+	color: #FFF;
+	padding: 0;
+	margin: 0;
+	font-size: 22px;
+	line-height: 34px;
+}
+
+.timeText {
+	color: white;
+	font-size: 20px;
+	opacity: 1;
+}	
+
+#bodyBlock {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding-top: 90px;
+	width: 900px;
+	height: 300px;
+	background-image: url("../../img/transBlock.png");
+}
+
+.mainText {
+	color: #ffff00;
+	font-size: 90px;
+	opacity: 1;
+}	
