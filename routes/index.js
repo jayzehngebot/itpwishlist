@@ -7,14 +7,6 @@
  var moment = require("moment"); // date manipulation library
 var dreamCourseModel = require("../models/dreamCourse.js"); //db model
 
-exports.index = function(req, res){
-
-	var templateData = {
-		title : siteTitle,
-	}
-  res.render('main', templateData);
-};
-
 exports.view = function(req, res){
 
 	console.log('main page req');
@@ -33,23 +25,34 @@ exports.view = function(req, res){
 });
 }
 
+exports.add = function(req, res){
+
+	console.log('main page req');
+	
+	var templateData = {
+		title : siteTitle,
+	}
+
+  res.render('main', templateData);
+	};
+
 exports.postClass = function(req, res){
 
 	console.log('recieved new class');
 	console.log(req.body);
 
-var newClass = new dreamCourseModel({
-	name : req.body.classTitle,
-	slug : req.body.classTitle.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'_'),
-	description : req.body.descript,
-	//themes : req.body.themes.split(","),
-	//skills : req.body.skills.split(","),
-	//genius : 
-	date : moment().format(),
-	proj_or_theory : req.body.proj_or_theory,
-	ayes : 0
+	var newClass = new dreamCourseModel({
+		name : req.body.classTitle,
+		slug : req.body.classTitle.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'_'),
+		description : req.body.descript,
+		//themes : req.body.themes.split(","),
+		//skills : req.body.skills.split(","),
+		//genius : 
+		date : moment().format(),
+		proj_or_theory : req.body.proj_or_theory,
+		ayes : 0
 
-});
+	});
 
 newClass.save(function(err){
 		if (err) {
@@ -62,7 +65,7 @@ newClass.save(function(err){
 			console.log(newClass);
 			
 			// redirect to the astronaut's page
-			res.redirect('/view');
+			res.redirect('/');
 		}
 	});
 };

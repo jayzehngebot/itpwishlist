@@ -35,6 +35,9 @@ html {
 	display: inline-block;
 	background: Gainsboro ;
 	border-right: 1px solid grey;
+	font-size: 12px;
+	font-family : Verdana;
+	font-weight: normal;
 }
 .themes{
 	position: relative;
@@ -60,12 +63,22 @@ html {
 	display: inline-block;
 }
 
-
+a {
+	color: #5CE62E;
+	text-decoration: none;
+}
+a: visited{
+	color: #5CE62E;
+}
+a: hover{
+	color: #5CE62E;
+	text-decoration: underline;
+}
 
 /*copyPast from smashingMag*/
 
 	.awesome, .awesome:visited {
-	margin-left: 500px;
+	margin-left: 700px;
 	margin-bottom: 30px;
 	background: #9A63C9 url(alert-overlay.png) repeat-x; 
 	display: inline-block; 
@@ -717,7 +730,7 @@ input{
 	border:1px solid #ccc;
 	margin:0 auto;
 	text-align:left;
-	width:640px;
+	width:850px;
 }
 
 #dropdowns{
