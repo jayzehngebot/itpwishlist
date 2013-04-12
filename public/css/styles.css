@@ -28,6 +28,10 @@ html {
 	margin-left: 10px;
 }
 
+.ayesNumber{
+	/*visibility: hidden;*/
+}
+
 .desc{
 	position: relative;
 	text-align: left;
@@ -54,13 +58,15 @@ html {
 	background: Gainsboro;
 	border-right: 2px solid grey;
 }
-.ayes {
+
+.aye {
 	font-size: 26px;
 	position: relative;
 	top: 5px;
 	padding-left :19px;
-	width : 40px;
+	width : 20px;
 	display: inline-block;
+	cursor: hand;
 }
 
 a {

@@ -47,9 +47,11 @@ app.configure('development', function(){
 
 // ROUTES
 var routes = require('./routes/index.js');
-app.get('/', routes.view);
+app.get('/', routes.view);  
 app.get('/add', routes.add);
 app.post('/add', routes.postClass);
+app.get('/classes/:slug/edit', routes.seeAyes);
+app.post('/classes/:slug/edit', routes.addAye);
 
 // create NodeJS HTTP server using 'app'
 

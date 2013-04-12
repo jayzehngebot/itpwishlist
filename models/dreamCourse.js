@@ -14,6 +14,5 @@ var dreamCourseSchema = new Schema({
 	proj_or_theory : String
 });
 
-
 // export 'dreamCourse' model
 module.exports = mongoose.model('dreamCourse',dreamCourseSchema);

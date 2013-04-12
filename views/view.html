@@ -12,11 +12,11 @@
 			
 			{{# classes}}
 			
-			<div class="dreamClass">
+			<div class="dreamClass {{proj_or_theory}}">
 				<div class="className">
 					<h1>{{name}}</h1>
 				</div>
-				<div class="desc {{proj_or_theory}}">
+				<div class="desc">
 				{{description}}
 				</div>
 				<div class="themes">
@@ -25,12 +25,50 @@
 				<div class="skills">
 					Skills
 				</div>
-				<div class="ayes">
-					&#x25B2;
+				<div class="{{slug}}" style="cursor:hand;display:inline-block;width:30;">
+					<span class="aye">&#x25B2;</span>
+						<span class="ayesNumber">
+							{{ayes}}
+						</span>
 				</div>
+
 			</div>
+
 
 			{{/ classes}}
 
 		</div>
 
+<script>
+$(document).ready(function (){
+	$('.aye').click(function(){
+		var currAyes = $(this).parent().children('.ayesNumber').val();
+		var target = $(this).parent().children('.ayesNumber').attr("class");
+		var parent = $(this).parent().attr("class");
+		console.log('current ayes : ' +currAyes);
+		console.log('current target : ' +target);
+		console.log('current parent : ' +parent);
+		var newAyes = (currAyes+1);
+		console.log(newAyes);
+		 $.ajax({
+                    url : 'classes/'+parent+'/edit',
+                    dataType : 'json',
+                    type : 'POST',
+                    data : {
+                        ayes : newAyes
+                    },
+                    success : function(data){
+                        console.log(data);
+                        // $('target').text(newAyes);
+                        //
+                    },
+                    error : function(error){
+                        console.log('error on ajax');
+                        target.parent().children('.ayesNumber').text(newAyes);
+                        //fix this below.
+                        //refreshCandlesOnPage();
+                    }
+	 });
+});
+	});
+</script>
