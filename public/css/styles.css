@@ -7,6 +7,61 @@ html {
 	background-size: cover;
 
 }
+
+.dreamClass {
+	text-align: left;
+	display: block;
+	background: white;
+	width : 840px;
+	margin : 0 auto;
+	padding-left: 15px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin-bottom: 30px;
+}
+
+.className {
+	top: -30;
+	left: -10px;
+	position: relative;
+	text-align: left;
+	margin-left: 10px;
+}
+
+.desc{
+	position: relative;
+	text-align: left;
+	width : 450px;
+	display: inline-block;
+	background: Gainsboro ;
+	border-right: 1px solid grey;
+}
+.themes{
+	position: relative;
+	width : 150px;
+	display: inline-block;
+	text-align: left;
+	border-right: 2px solid grey;
+}
+.skills {
+	position: relative;
+	width : 150px;
+	display: inline-block;
+	text-align: left;
+	background: Gainsboro;
+	border-right: 2px solid grey;
+}
+.ayes {
+	font-size: 26px;
+	position: relative;
+	top: 5px;
+	padding-left :19px;
+	width : 40px;
+	display: inline-block;
+}
+
+
+
 /*copyPast from smashingMag*/
 
 	.awesome, .awesome:visited {
@@ -50,12 +105,19 @@ to { background-color: #9A63C9; -webkit-box-shadow: 0 0 0px white; }
 /*copyPast from smashingMag*/
 
 body {
-
 	margin: 0;
 	padding: 0;
 	font-family: EuropaGroNr2SBOP-Ult; 
 }
 
+
+.newClass{
+position: relative;
+color: #5CE62E;
+display: inline;
+margin-left:600px;
+
+}
 
 form ul
 {
@@ -73,7 +135,12 @@ form li
 	padding:4px 5px 2px 9px;
 	position:relative;
 }
-
+.project{
+	background: Lavender ;
+}
+.theory{
+	background: WhiteSmoke ;
+}
 form li:after
 {
 	clear:both;
@@ -81,6 +148,9 @@ form li:after
 	display:block;
 	height:0;
 	visibility:hidden;
+}
+#form_container h1{
+	margin-top: 30px;
 }
 
 .buttons:after
@@ -296,9 +366,9 @@ input.text
 	border-right:1px solid #c3c3c3;
 	border-top:1px solid #7c7c7c;
 	color:#333;
-	font-size:100%;
-	margin:0;
-	padding:2px 0;
+	font-size:115%;
+	line-height:130%;
+
 }
 
 input.file
@@ -685,7 +755,7 @@ input{
 
 #headContainer {
 	margin: 0 auto;
-	width: 625px;
+	width: 850px;
 	text-align: left;
 }
 
