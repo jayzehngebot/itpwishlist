@@ -26,10 +26,8 @@
 					Skills
 				</div>
 				<div class="{{slug}}" style="cursor:hand;display:inline-block;width:30;">
-					<span class="aye">&#x25B2;</span>
-						<span class="ayesNumber">
-							{{ayes}}
-						</span>
+					<span class="aye">&#x25B2;<span class="ayesNumber">{{ayes}}</span></span>
+					
 				</div>
 
 			</div>
@@ -41,18 +39,22 @@
 
 <script>
 $(document).ready(function (){
-	$('.aye').click(function(){
-		var currAyes = $(this).parent().children('.ayesNumber').val();
-		var target = $(this).parent().children('.ayesNumber').attr("class");
-		var parent = $(this).parent().attr("class");
-		console.log('current ayes : ' +currAyes);
+	$('.aye').click(function(e){
+		var place = $(this);
+		var slug = $(this).parent().attr("class");
+		console.log('current parent : ' +slug);
+		var currAyes = $(this).children('.ayesNumber').text();
+		console.log('current ayes val : ' +currAyes);
+		var target = $(this).children('.ayesNumber').attr("class");
 		console.log('current target : ' +target);
-		console.log('current parent : ' +parent);
-		var newAyes = (currAyes+1);
+	
+		var newAyes = (parseInt(currAyes)+1);
 		console.log(newAyes);
+
+
 		 $.ajax({
-                    url : 'classes/'+parent+'/edit',
-                    dataType : 'json',
+                    url : 'classes/'+slug+'/edit',
+                    dataType : 'pjson',
                     type : 'POST',
                     data : {
                         ayes : newAyes
@@ -64,11 +66,15 @@ $(document).ready(function (){
                     },
                     error : function(error){
                         console.log('error on ajax');
-                        target.parent().children('.ayesNumber').text(newAyes);
+                        place.children('.ayesNumber').text(newAyes);
                         //fix this below.
                         //refreshCandlesOnPage();
                     }
+
+
 	 });
+		  		  e.preventDefault();
+                  return false;
 });
 	});
 </script>

@@ -98,8 +98,7 @@ exports.addAye = function(req,res){
 	var slug = req.params.slug;
 
 	var updatedData = {
-		ayes : req.body.ayes
-		//layout : false
+		ayes : req.body.ayes,
 	}
 
 	dreamCourseModel.update({slug:slug}, { $set: updatedData }, function(err, dreamClass){

@@ -37,9 +37,9 @@ html {
 	text-align: left;
 	width : 450px;
 	display: inline-block;
-	background: Gainsboro ;
 	border-right: 1px solid grey;
 	font-size: 12px;
+	padding: 3px;
 	font-family : Verdana;
 	font-weight: normal;
 }
@@ -807,6 +807,7 @@ h2 {
 	margin: 0 auto;
 	margin-top: 30px;
 	padding-top: 50px;
+	padding-bottom: 25px;
 	width: 900px;
 	background-image: url("../../img/transBlock.png");
 }
