@@ -3,12 +3,12 @@
  * GET home page.
  */
 
- var siteTitle = "Skeleton";
+ var siteTitle = "ITPWishList";
 
 exports.index = function(req, res){
 
 	var templateData = {
 		title : siteTitle,
 	}
-  res.render('index', templateData);
+  res.render('main', templateData);
 };
