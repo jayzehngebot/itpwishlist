@@ -32,11 +32,26 @@ app.configure(function(){
   // app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+
+
+  //cookies stuff
+  //pass secret key to cookieParser() for signed cookies
+  app.use(express.cookieParser('0984390842sadlkjsDLOJS9IUEWQWQRPLJLKJAASDQWE'));
+  app.use(express.cookieSession()); // add req.sessoin cookies
+
+  // make sesh info available to templates
+  // keeping track of what they've voted for
+  app.use(function(req,res,next){
+    res.locals.sessionVotedFor = req.session.votedFor;
+    next();
+  });
+
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 
   // database - skipping until week 5
   app.db = mongoose.connect(process.env.MONGOLAB_URI);
+
   
 });
 
@@ -52,6 +67,7 @@ app.get('/add', routes.add);
 app.post('/add', routes.postClass);
 app.get('/classes/:slug/edit', routes.seeAyes);
 app.post('/classes/:slug/edit', routes.addAye);
+
 
 // create NodeJS HTTP server using 'app'
 

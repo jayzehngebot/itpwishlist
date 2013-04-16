@@ -96,10 +96,16 @@ exports.addAye = function(req,res){
 	console.log('adding an aye');
 
 	var slug = req.params.slug;
+	//var classesVotedFor = req.session.votedFor;
+	//console.log('serverside | classes this session voted for : '+classesVotedFor);
 
 	var updatedData = {
 		ayes : req.body.ayes,
 	}
+
+	//write to session
+
+	//req.session.votedFor = classesVotedFor;
 
 	dreamCourseModel.update({slug:slug}, { $set: updatedData }, function(err, dreamClass){
 	
@@ -107,11 +113,28 @@ exports.addAye = function(req,res){
 				console.log('error on update');
 			}
 			if (dreamClass != null){
-				res.redirect('/');
+				console.log("success on update");
+				console.log("logged new aye to "+slug);
+				 res.redirect('/');
 			} else {
 				console.log('unable to find' + slug +"class");
 				//return res.status(404).render('404.html');
 			}
 		});
+}
+
+exports.setSession = function(req, res) {
+
+	// set the session with the submitted form data
+	//get a list of dreamclasses that user has voted for
+	// then check to see if the dreamclass is on their list
+	//before subbmitting the vote
+
+	req.session.votedFor = classesVotedFor;
+
+	// redirect back to where they came from
+	console.log(req.referrer);
+	res.redirect('/');
+
 }
 	

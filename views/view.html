@@ -39,7 +39,11 @@
 
 <script>
 $(document).ready(function (){
+		//variable to hold things voted for
+		var classesVotedFor = '';
+
 	$('.aye').click(function(e){
+		e.preventDefault();
 		var place = $(this);
 		var slug = $(this).parent().attr("class");
 		console.log('current parent : ' +slug);
@@ -47,34 +51,58 @@ $(document).ready(function (){
 		console.log('current ayes val : ' +currAyes);
 		var target = $(this).children('.ayesNumber').attr("class");
 		console.log('current target : ' +target);
-	
 		var newAyes = (parseInt(currAyes)+1);
 		console.log(newAyes);
 
+		console.log("voted for : "+classesVotedFor);
 
-		 $.ajax({
-                    url : 'classes/'+slug+'/edit',
-                    dataType : 'pjson',
-                    type : 'POST',
-                    data : {
-                        ayes : newAyes
-                    },
-                    success : function(data){
-                        console.log(data);
-                        // $('target').text(newAyes);
-                        //
-                    },
-                    error : function(error){
-                        console.log('error on ajax');
-                        place.children('.ayesNumber').text(newAyes);
-                        //fix this below.
-                        //refreshCandlesOnPage();
-                    }
+		// check to see if prev vote for this slug
+
+		searchVotes(slug, place, newAyes);	
+
+		//if their session contains this class slug
 
 
-	 });
-		  		  e.preventDefault();
-                  return false;
+
+        });    
+
+
+		function searchVotes(data, t_place, t_ayes){
+
+			var string = classesVotedFor;
+			var searchHits = string.search(data);
+
+			console.log('results of string search : '+searchHits);
+
+				if (searchHits == -1){
+
+						//alert('you already voted for '+ data);
+
+						$.ajax({
+	                    url : 'classes/'+data+'/edit',
+	                    //dataType : 'json', // this isnt json, so I don't need this.
+	                    type : 'POST',
+	                    data : {
+	                    	//classesVotedFor : t_place,
+	                        ayes : t_ayes
+	                    },
+	                    success : function(response){
+	                   
+	                        t_place.children('.ayesNumber').text(t_ayes);
+	                        classesVotedFor += data+",";
+
+	                    },
+	                    error : function(error){
+	                        console.log('error on ajax');
+
+	                    }
+
+
+					});
+
+
+				};
+			};
+
 });
-	});
 </script>
