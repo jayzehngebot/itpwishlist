@@ -7,28 +7,49 @@
 			</div>
 		</div>
 
+<!-- 		{{#sessionVotedFor}}
+			{{sessionVotedFor}}
+		{{/sessionVotedFor}} -->
 	
 		<div id="bodyBlock">
+
+			<div id="info">
+				<span class="info subClass">Class</span>
+				<span class="info subThemes">Themes</span>
+				<span class="info subSkills">Skills</span>
+			</div>
 			
 			{{# classes}}
 			
 			<div class="dreamClass {{proj_or_theory}}">
 				<div class="className">
 					<h1>{{name}}</h1>
+
+
+					<div class="{{slug}}" style="cursor:hand;display:inline;align:right;width:30;">
+					<span class="aye">&#x25B2;<span class="ayesNumber">{{ayes}}</span></span>
+					
+				</div>
+
 				</div>
 				<div class="desc">
 				{{description}}
 				</div>
 				<div class="themes">
-					Themes
+					<ul>
+						{{# themes}}
+						<li>{{.}}</li>
+						{{/ themes}}
+					</ul>
 				</div>
 				<div class="skills">
-					Skills
+					<ul>
+						{{# skills}}
+						<li>{{.}}</li>
+						{{/ skills}}
+					</ul>
 				</div>
-				<div class="{{slug}}" style="cursor:hand;display:inline-block;width:30;">
-					<span class="aye">&#x25B2;<span class="ayesNumber">{{ayes}}</span></span>
-					
-				</div>
+
 
 			</div>
 
@@ -40,7 +61,7 @@
 <script>
 $(document).ready(function (){
 		//variable to hold things voted for
-		var classesVotedFor = '';
+		var classesVotedFor = '{{sessionVotedFor}}';
 
 	$('.aye').click(function(e){
 		e.preventDefault();
@@ -64,6 +85,9 @@ $(document).ready(function (){
 
 
 
+
+
+
         });    
 
 
@@ -83,7 +107,6 @@ $(document).ready(function (){
 	                    //dataType : 'json', // this isnt json, so I don't need this.
 	                    type : 'POST',
 	                    data : {
-	                    	//classesVotedFor : t_place,
 	                        ayes : t_ayes
 	                    },
 	                    success : function(response){
@@ -91,17 +114,43 @@ $(document).ready(function (){
 	                        t_place.children('.ayesNumber').text(t_ayes);
 	                        classesVotedFor += data+",";
 
+	                        writeToSession(data);
+
 	                    },
 	                    error : function(error){
 	                        console.log('error on ajax');
 
 	                    }
-
-
 					});
+					/// ^^^ AJAX FOR ayes ////
+
+
 
 
 				};
+
+
+		function writeToSession(t_place){
+
+			console.log("the data being sent to ajax is : "+t_place);
+				$.ajax({
+					url : '/session/votes',
+					type : 'POST',
+					data : {
+						classParam : t_place
+					},
+					success : function(response){
+						console.log('success ajax to session');
+
+					}, 
+					error : function(error){
+						console.log('error ajax to session');
+					}
+				});
+		}
+
+
+
 			};
 
 });

@@ -12,7 +12,7 @@ exports.view = function(req, res){
 
 	console.log('main page req');
 
-	dreamCourseModel.find({}, 'name slug description proj_or_theory ayes', function(err, allClasses){
+	dreamCourseModel.find({}, 'name slug description themes skills proj_or_theory ayes', function(err, allClasses){
 		if (err){
 			res.send('error with db').status(500);
 		};
@@ -46,8 +46,8 @@ exports.postClass = function(req, res){
 		name : req.body.classTitle,
 		slug : req.body.classTitle.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'_'),
 		description : req.body.descript,
-		//themes : req.body.themes.split(","),
-		//skills : req.body.skills.split(","),
+		themes : req.body.themes,
+		skills : req.body.skills,
 		//genius : 
 		date : moment().format(),
 		proj_or_theory : req.body.proj_or_theory,
@@ -96,6 +96,9 @@ exports.addAye = function(req,res){
 	console.log('adding an aye');
 
 	var slug = req.params.slug;
+
+	//var classesVotedFor = classesVotedFor+slug;
+	//console.log(classesVotedFor);
 	//var classesVotedFor = req.session.votedFor;
 	//console.log('serverside | classes this session voted for : '+classesVotedFor);
 
@@ -130,10 +133,18 @@ exports.setSession = function(req, res) {
 	// then check to see if the dreamclass is on their list
 	//before subbmitting the vote
 
-	req.session.votedFor = classesVotedFor;
+	var classVotedFor = req.body.classParam;
+
+	console.log('just registered vote for : '+classVotedFor);
+
+	req.session.votedFor += classVotedFor+",";
+
+	console.log('all votes : '+req.session.votedFor);
+
+	
 
 	// redirect back to where they came from
-	console.log(req.referrer);
+	//console.log(req.referrer);
 	res.redirect('/');
 
 }

@@ -8,11 +8,56 @@ html {
 
 }
 
+li{
+	text-align: left;
+	font-family: verdana;
+	font-size: 12px;
+}
+
+ul{
+	list-style-type:square;
+	height: auto;
+	padding: 3px;
+	padding-left: 15px;
+	margin: 3px;
+}
+
+#info {
+	width: 900px;
+	margin: 0 auto;
+	text-align: left;
+	display: inline-block;
+	color: white;
+	padding-bottom: 10px;
+}
+
+.subClass {
+	display: inline-block;
+	padding-left: 23px;
+	text-align: left;
+	width : 530px;
+}
+
+.subThemes {
+	text-align : center;
+	display: inline-block;
+	padding-left: 3px;
+	width : 150px;
+}
+.subSkills {
+	text-align: center;
+	display: inline-block;
+	padding-left: 3px;
+	width : 150px;
+}
+
+
 .dreamClass {
 	text-align: left;
 	display: block;
 	background: white;
 	width : 840px;
+/*	height: 200px;*/
 	margin : 0 auto;
 	padding-left: 15px;
 	padding-bottom: 15px;
@@ -21,10 +66,9 @@ html {
 }
 
 .className {
-	top: -30;
-	left: -10px;
+	width: 800px;
 	position: relative;
-	text-align: left;
+	/*text-align: left;*/
 	margin-left: 10px;
 }
 
@@ -35,39 +79,62 @@ html {
 .desc{
 	position: relative;
 	text-align: left;
-	width : 450px;
+	top: 0px;
+	width : 500px;
+	height: auto;	
 	display: inline-block;
-	border-right: 1px solid grey;
+	border-right: 2px solid grey;
 	font-size: 12px;
 	padding: 3px;
+	padding-right: 10px;
+	padding-bottom: 10px;
 	font-family : Verdana;
 	font-weight: normal;
+
 }
 .themes{
 	position: relative;
 	width : 150px;
+	height : auto;
 	display: inline-block;
 	text-align: left;
+	padding: 3px;
+	padding-right: 10px;
+	top: 0px;
 	border-right: 2px solid grey;
 }
 .skills {
+	height : auto;
 	position: relative;
 	width : 150px;
 	display: inline-block;
 	text-align: left;
-	background: Gainsboro;
-	border-right: 2px solid grey;
+	padding: 3px;
+	padding-right: 10px;
+	: 0px;
 }
 
 .aye {
+	text-align: right;
 	font-size: 26px;
 	position: relative;
-	top: 5px;
+	top: 0px;
 	padding-left :19px;
 	width : 20px;
-	display: inline-block;
+	display: inline;
 	cursor: hand;
 }
+
+
+.ayesNumber {
+	font-size: 11px;
+	padding-left: 4px;
+	text-align: center;
+	width : 20px;
+	display: inline;
+	cursor: hand;
+}
+
 
 a {
 	color: #5CE62E;

@@ -67,6 +67,7 @@ app.get('/add', routes.add);
 app.post('/add', routes.postClass);
 app.get('/classes/:slug/edit', routes.seeAyes);
 app.post('/classes/:slug/edit', routes.addAye);
+app.post('/session/votes', routes.setSession);
 
 
 // create NodeJS HTTP server using 'app'
